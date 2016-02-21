@@ -1,0 +1,863 @@
+/*
+ цветовая палитра: http://color.romanuke.com/tsvetovaya-palitra-2152/
+ фоновые цвета: #BFD9CD #E9E6DF #D0EDE0
+ акцентные цвета: #C09C6F #6E4B40 #AA4E4C
+ */
+ /* общие настроки шрифта, цвета, фона*/
+body, p, li {
+  font-size: 14px;
+  line-height: 21px;
+  color: #6E4B40;
+  font-family: "Comfortaa", "Arial", sans-serif;
+}
+
+body {
+  background-color: #d0ede0;
+}
+
+/* сброс и установка общих стилей */
+a {
+  text-decoration: none;
+  color: #6E4B40;
+}
+
+h2 {
+  font-size: 22px;
+  line-height: 29px;
+  font-weight: bold;
+  color: #6E4B40;
+  margin-bottom: 25px;
+}
+
+ul{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  position: relative;
+  display: block;
+  margin-bottom: 10px;
+  padding-left: 20px;
+  font-size: 18px;
+  line-height: 21px;
+  color: #6E4B40;
+}
+
+p {
+  font-size: 16px;
+  line-height: 21px;
+  margin: 25px 0;
+  color: #6E4B40;
+  text-align: justify;
+}
+
+/* help class*/
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.cake-photo img {
+  height: 500px;
+}
+ /* общий контейнер*/
+.container {
+  margin: 0 auto;
+  max-width: 1200px;
+  min-width: 270px;
+  box-shadow: 0 0 15px 0 grey;
+  overflow: hidden;
+  background-image: repeating-linear-gradient(
+                      45deg,
+                      #BFD9CD 0px,
+                      #BFD9CD 15px,
+                      transparent 15px,
+                      transparent 30px),
+                    repeating-linear-gradient(
+                      -45deg,
+                      #BFD9CD 0px,
+                      #BFD9CD 15px,
+                      transparent 15px,
+                      transparent 30px);
+}
+
+header {
+  position: relative;
+  padding: 10px 5%;
+  min-height: 30px;
+  background-color: #E9E6DF;
+  border-bottom: 5px solid #c09c6f;
+  margin-bottom: 46px;
+}
+
+header::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 61px;
+  background: url("../img/decor.png") 0 -20px repeat-x;
+  top: calc(100% + 4px);
+  left: 0;
+}
+
+header .logo {
+  float: left;
+  max-width: 50%;
+  min-width: 275px;
+  padding: 10px 0;
+  font-size: 24px;
+  line-height: 31px;
+  font-weight: bold;
+  text-align: center;
+  color: #AA4E4C;
+  border: 2px dashed #AA4E4C;
+  border-radius: 15px;
+  box-shadow: inset 0 0 10px 0 #6E4B40;
+}
+
+header h1 {
+  font-size: 24px;
+  line-height: 31px;
+  font-weight: bold;
+  text-align: center;
+  color: #AA4E4C;
+  margin: 0;
+}
+
+.navigation {
+  float: right;
+  max-width: 50%;
+}
+
+.navigation ul{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.logo .small-nav {
+  position: relative;
+  display: none;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  margin: 0;
+}
+
+.logo .small-nav::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 5px;
+  top: 50%;
+  left: 0;
+  background-color: #AA4E4C;
+  transform: translateY(-50%);
+  box-shadow: 0 -10px 0 0  #AA4E4C,
+              0 10px 0 0  #AA4E4C;
+  border-radius: 5px;
+}
+
+.small-navigation {
+  position: absolute;
+  top: 0;
+  left: -110%;
+  /*left: 0;*/
+  width: 100%;
+  display: none;
+  padding: 12px;
+  background: rgba(170, 78, 76, 1);
+  z-index:5;
+  transition: all 0.5s ease;
+}
+.show-menu {
+  transform: translateX(100%);
+}
+
+.small-navigation a {
+  color: #E9E6DF;
+}
+
+.small-navigation ul {
+  text-align: right;
+  margin-right: 20px;
+}
+
+.small-navigation a:hover,
+.small-navigation a:active {
+  text-decoration: underline;
+}
+
+.smal-nav-back {
+  position: absolute;
+  width: 30px;
+  height: 5px;
+  top:30px;
+  left:25px;
+  background-color: #E9E6DF;
+  border-radius: 5px;
+}
+
+.smal-nav-back::before {
+  position: absolute;
+  content: "";
+  width: 20px;
+  height: 5px;
+  top:-5px;
+  left:0px;
+  background-color: #E9E6DF;
+  border-radius: 5px;
+  transform: rotate(-35deg);
+}
+.smal-nav-back::after {
+  position: absolute;
+  content: "";
+  width: 20px;
+  height: 5px;
+  top:5px;
+  left:0px;
+  background-color: #E9E6DF;
+  border-radius: 5px;
+  transform: rotate(35deg);
+}
+
+.navigation li {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 0;
+}
+
+.navigation a{
+  display: block;
+  padding: 15px 5px;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.navigation a:hover,
+.navigation a:active {
+  color: #AA4E4C;
+  text-decoration: underline;
+}
+
+.slaider {
+  position: relative;
+  min-height: 530px;
+}
+
+.container input[type="radio"] {
+  display: none;
+}
+
+.slaider .cake-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: inherit;
+  background-color: rgba(233, 230, 223, 0.7);
+  transition: transform 1s ease-out;
+}
+
+.cake-slide.second-cake {
+  left: 100%;
+}
+
+.cake-slide.third-cake {
+  left: 200%;
+}
+
+.cake-photo {
+  float: left;
+  width: 40%;
+  padding-left: 5%;
+  text-align: right;
+}
+
+.cake-photo img{
+  border: 5px solid white;
+  margin-bottom: -5px;
+  max-width: 360px;
+  height: auto;
+}
+
+.cake-about {
+  float: right;
+  text-align: left;
+  padding-right: 5%;
+  width: 40%;
+  color:black;
+}
+
+
+.cake-about li::before {
+  position: absolute;
+  content: "";
+  width: 10px;
+  height: 10px;
+  top: 6px;
+  left: 0px;
+  background-color: #6E4B40;
+  transform: rotate(45deg);
+}
+
+.cake-about .cake-buy,
+.cake-about .cake-more,
+.composition .cake-buy,
+.composition .cake-more {
+  display: inline-block;
+  vertical-align: top;
+  padding: 5px 10px;
+  text-decoration: none;
+  border: 2px solid #6E4B40;
+  border-radius: 5px;
+  color: #6E4B40;
+  font-size: 16px;
+  line-height: 21px;
+}
+
+.cake-about .cake-buy {
+  margin-right: 10px;
+}
+
+.cake-about .cake-buy:hover,
+.cake-about .cake-buy:active,
+.composition .cake-buy:hover,
+.composition .cake-buy:active {
+  background-color: #AA4E4C;
+  border-color: #AA4E4C;
+  color: #E9E6DF;
+}
+
+.cake-about .cake-more:hover,
+.cake-about .cake-more:active,
+.composition .cake-more:hover,
+.composition .cake-more:active {
+  background-color: #C09C6F;
+  border-color: #C09C6F;
+  color: #E9E6DF;
+}
+
+.cake-about .cake-more {
+  display: none;
+}
+
+.slider-control {
+  text-align: center;
+  font-size: 0;
+  background-color: rgba(233, 230, 223, 0.7);
+  padding: 20px 0 5px 0;
+  margin-bottom: 20px;
+}
+
+.slider-control .slider-check {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  padding: 5px 20px;
+  border: 2px solid #C09C6F;
+  background-color: #E9E6DF;
+  font-size: 16px;
+  line-height: 21px;
+  text-decoration: none;
+  color:  #6E4B40;
+  border-right: none;
+  cursor: pointer;
+}
+
+.slider-control .slider-check:first-child {
+  padding-left: 5px;
+}
+
+.slider-control .slider-check::after {
+  position: absolute;
+  content: "";
+  width: 22px;
+  height: 22px;
+  background-color: #E9E6DF;
+  border-top: 2px solid #C09C6F;
+  border-right: 2px solid #C09C6F;
+  right: -12px;
+  top: 3px;
+  transform: rotate(45deg);
+  z-index: 5;
+}
+
+.slider-control .slider-check:hover {
+  background-color: #C09C6F;
+  color: #E9E6DF;
+}
+
+.slider-control .slider-check:hover::after {
+  background-color: #C09C6F;
+}
+
+.for-second-cake:checked ~ .slaider .first-cake,
+.for-second-cake:checked ~ .slaider .second-cake,
+.for-second-cake:checked ~ .slaider .third-cake {
+  transform: translateX(-100%);
+}
+
+.for-third-cake:checked ~ .slaider .first-cake,
+.for-third-cake:checked ~ .slaider .second-cake,
+.for-third-cake:checked ~ .slaider .third-cake {
+  transform: translateX(-200%);
+}
+
+.for-first-cake:checked ~ .slider-control .slider-check-for-first,
+.for-second-cake:checked ~ .slider-control .slider-check-for-second,
+.for-third-cake:checked ~ .slider-control .slider-check-for-third,
+.for-first-cake:checked ~ .slider-control .slider-check-for-first::after,
+.for-second-cake:checked ~ .slider-control .slider-check-for-second::after,
+.for-third-cake:checked ~ .slider-control .slider-check-for-third::after {
+  background-color: #C09C6F;
+  color: #E9E6DF;
+}
+
+/* about me */
+.about-me,
+.order-specification {
+  margin-left: 3%;
+  margin-right: 3%;
+  background-color: rgba(192, 156, 111, 0.4);
+  border-radius: 10px;
+  padding: 2%;
+  box-shadow: 0 0 10px;
+  border: 2px dashed #6E4B40;
+  margin-bottom: 20px;
+}
+
+.about-text {
+  float: left;
+  max-width: 60%;
+  font-weight: bold;
+}
+
+.order-specification {
+  font-weight: bold;
+}
+
+.about-text p,
+.order-specification p {
+  margin-bottom: 0;
+}
+
+.about-photo {
+  float: right;
+  max-width: 35%;
+}
+
+.about-photo img {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-bottom: -5px;
+  box-shadow: 0 0 5px black;
+}
+
+ .about-me-photo-p {
+   display: none;
+ }
+
+ /* all torts*/
+ .compositions {
+   width: 100%;
+   background-color: rgba(233, 230, 223, 0.7);
+   padding: 2% 5% 0% 5%;
+   margin-bottom: 20px;
+ }
+
+ .composition .cake-buy,
+ .composition .cake-more {
+   margin-bottom: 2%;
+ }
+
+ .composition {
+   display: inline-block;
+   vertical-align: top;
+   width: 28%;
+   font-size: 0;
+   padding: 1%;
+   outline: 2px solid #C09C6F;
+   margin-right: 1%;
+   margin-bottom: 1%;
+   background-color: rgba(233, 230, 223, 1);
+   box-shadow: 0 0 12px;
+   text-align: center;
+ }
+
+ .composition .composition-img{
+   width: 100%;
+   max-height: 250px;
+   overflow: hidden;
+   margin-bottom: 10px;
+   outline: 2px solid #C09C6F;
+ }
+
+ .composition-img img{
+   width: 100%;
+   max-height: 250px;
+   transition: all 0.3s ease;
+ }
+
+.composition-img img:hover {
+    transform: scale(1.4);
+}
+
+.composition-action span{
+  display: block;
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.composition-action .cake-buy {
+  margin-right: 5px;
+}
+
+.more-text {
+  display: none;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin:0;
+}
+.more-text-close {
+  display: none;
+  margin: 0;
+  font-size: 14px;
+  cursor: pointer;
+  margin-bottom: 5px;
+  color: #AA4E4C;
+}
+.more-text-close:hover,
+.more-text-close:active {
+  text-decoration: underline;
+}
+.more-text-show {
+  display: block;
+}
+
+footer {
+  min-height: 30px;
+  padding: 10px 5%;
+  background-color: #E9E6DF;
+  border-top: 5px solid #c09c6f;
+}
+.contacts {
+  float: left;
+}
+.contacts .photo {
+  margin: 5px 0;
+  font-weight: bold;
+}
+
+.photo a{
+  font-weight: normal;
+  border-bottom: 2px dashed #6E4B40;
+}
+
+.copyright {
+  float: right;
+  margin: 10px 0;
+}
+.copyright .disign {
+  color: #6E4B40;
+  border-bottom: 2px dashed #6E4B40;
+}
+footer h3 {
+  margin: 0;
+  margin-bottom: 5px;
+}
+footer span {
+  display: block;
+}
+@font-face {
+  font-family: 'fontello';
+  src: url('../fonts/fontello.woff?82604848') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  margin-left: .2em;
+}
+
+.icon-phone:before { content: '\e800'; }
+.icon-mail:before { content: '\e801'; }
+
+@media screen and (max-width:785px){
+  header {
+    padding-bottom: 0;
+  }
+
+  header .logo,
+  .navigation {
+    display: block;
+    float: left;
+    text-align: center;
+  }
+
+  header .logo {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .navigation {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .cake-about p {
+    display: none;
+  }
+
+  .cake-about .cake-more {
+    display: inline-block;
+  }
+
+  .cake-about .cake-buy,
+  .cake-about .cake-more {
+    margin-top: 20px;
+  }
+
+  .slaider,
+  .slaider .cake-slide {
+    min-height: 310px;
+  }
+
+  .cake-photo,
+  .cake-photo img {
+    max-height: 296px;
+  }
+
+  .cake-slide {
+    transition: transform 0.5s ease-out;
+  }
+
+  .about-photo {
+     display: none;
+ }
+
+  .about-me-photo-p {
+     float: right;
+     display: inline;
+     margin-left: 10px;
+     border-radius: 5px;
+     box-shadow: 0 0 5px;
+ }
+  .about-text p,
+  .order-specification p {
+    font-size: 14px;
+    font-weight: normal;
+  }
+
+  .about-text {
+    max-width: 100%;
+  }
+  .compositions {
+    margin-bottom: 10px;
+  }
+  .composition {
+    width: 42%;
+  }
+}
+
+@media screen and (max-width:645px){
+  .cake-about h2{
+    font-size: 18px;
+    line-height: 23px;
+  }
+  .cake-about li,
+  .cake-about .cake-buy,
+  .cake-about .cake-more,
+  .composition .cake-buy,
+  .composition .cake-more{
+    font-size: 14px;
+    line-height: 18px;
+  }
+  .cake-about li::before {
+    top: 5px;
+  }
+  .cake-about .cake-buy,
+  .cake-about .cake-more,
+  .composition .cake-buy,
+  .composition .cake-more{
+    margin-right: 0px;
+  }
+  .cake-photo {
+    padding-left: 10px;
+    width: 45%;
+  }
+  .cake-about {
+    padding-right: 10px;
+    width: 45%;
+  }
+  .cake-photo img {
+    max-width: 210px;
+    height: auto;
+  }
+}
+
+@media screen and (max-width:460px) {
+  .slaider .cake-slide {
+    min-height: 600px;
+  }
+  .cake-photo,
+  .cake-about {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  .cake-photo,
+  .cake-photo img {
+    height: 300px;
+  }
+  .cake-photo img {
+    max-width: none;
+    width: auto;
+  }
+  .cake-about {
+    margin-top: 10px;
+  }
+  .cake-about ul {
+    display: block;
+    width:60%;
+    text-align: left;
+    margin: 0 auto;
+  }
+  .cake-about h2 {
+    margin-bottom: 10px;
+  }
+  .cake-about .cake-buy,
+  .cake-about .cake-more {
+    margin-top:10px;
+  }
+
+  .slaider,
+  .slaider .cake-slide {
+    min-height: 570px;
+  }
+
+  .slider-control,
+  .about-me,
+  .order-specification {
+    margin-bottom: 10px;
+  }
+
+  .slider-control .slider-check {
+    font-size: 12px;
+    margin: 0;
+    padding: 5px 17px;
+  }
+
+  .about-me-photo-p {
+    display: none;
+  }
+
+  .about-text,
+  .about-photo {
+    display: block;
+    max-width: 100%;
+  }
+
+  .about-text {
+    margin-bottom: 10px;
+  }
+
+  .about-text p,
+  .order-specification p {
+     margin-top: -20px;
+  }
+
+  .about-text h2,
+  .order-specification h2{
+     margin-top: 5px;
+  }
+
+  .composition {
+    width: 90%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  .composition .cake-buy {
+    margin-right: 10px;
+  }
+}
+
+@media screen and (max-width:400px){
+  header {
+    padding: 10px 0 0 0;
+  }
+  header .logo{
+    min-width: 100px;
+    font-size: 18px;
+    line-height: 24px;
+    padding: 5px 0;
+  }
+
+  .navigation ul {
+    display: none;
+  }
+
+  .logo h1,
+  .logo .small-nav {
+    display: inline-block;
+    vertical-align: middle;
+    }
+
+  .small-navigation {
+    display: block;
+  }
+
+  .logo h1 {
+    margin-right: 15px;
+  }
+  .logo {
+    margin-bottom: 10px;
+  }
+
+  .slider-control .slider-check {
+    font-size: 10px;
+    padding: 2px 12px;
+  }
+
+  .slider-control .slider-check:first-child {
+    padding-left: 3px;
+  }
+
+  .slider-control .slider-check::after {
+    width: 17px;
+    height: 17px;
+    right: -10px;
+    top: 3px;
+    transform: rotate(45deg);
+    z-index: 5;
+  }
+}
+
+@media screen and (max-width:380px){
+  .slaider,
+  .slaider .cake-slide {
+    min-height: 585px;
+  }
+}
