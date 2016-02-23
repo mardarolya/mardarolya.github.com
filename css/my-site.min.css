@@ -1,0 +1,46 @@
+@font-face{font-family:'fontello';src:url('../fonts/fontello.woff?23653040') format('woff');font-weight:400;font-style:normal}[class*=" icon-"]:before,[class^=icon-]:before{font-family:"fontello";font-style:normal;font-weight:700;speak:none;display:inline-block;text-decoration:inherit;width:1em;margin-right:1em;text-align:center;font-variant:normal;text-transform:none;line-height:1em;margin-left:.2em;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.icon-mail:before{content:'\e800'}.icon-skype-outline:before{content:'\e801'}.icon-mobile:before{content:'\e802'}.icon-download-alt:before{content:'\e803';font-weight:400}.icon-github-circled:before{content:'\e804'}.icon-location-outline:before{content:'\e805'}body{background-color:#ffecdb;color:#2d3431;font-size:16px;line-height:21px;font-family:"Open Sans","Arial",sans-serif}img{width:100%;height:auto}.clearfix::after{content:"";display:table;clear:both}.conteiner{max-width:1200px;min-width:320px;margin:0 auto;border:2px dotted #717b8e;border-top:none;background-image:repeating-linear-gradient(-45deg,#fff 0,#fff 2px,transparent 2px,transparent 4px)}.my-name{font-size:30px;line-height:39px;font-weight:700;text-align:center;padding:1%;border-bottom:2px dotted #717b8e}.contacts .small-img,.small-my-name{display:none}.contacts{float:left;box-sizing:border-box;width:20%;padding:1%;font-size:14px}.contacts img{border-radius:5px}.contacts span{display:block;margin:2%}.contacts a{color:#2d3431}.contacts a:active,.contacts a:hover{color:#717b8e}.sklls-and-projects{float:right;width:80%;box-sizing:border-box;border-left:2px dotted #717b8e}.skils{padding:1%}.skils p{margin-top:0}.projects-h1,.skils a:hover,.skils span{font-weight:700}.skils a{display:block;width:140px;padding:7px;text-align:center;text-decoration:none;color:#ffecdb;background-color:#717b8e;border:2px solid #717b8e;border-radius:5px}.skils a:hover{color:#2d3431;background-color:#ffecdb}.projects-h1{border-top:2px dotted #717b8e;border-bottom:2px dotted #717b8e;font-size:20px;line-height:27px;padding:10px;text-align:center}.projects-list{font-size:0}.project{display:inline-block;vertical-align:top;box-sizing:border-box;width:32%;padding:5px;margin:10px 0 10px 1%;box-shadow:0 0 7px;font-size:14px;line-height:21px}.project:nth-child(3n){margin-right:1%}.project .project-name{display:block;text-align:center;font-weight:700;margin-bottom:5px;color:#2d3431;font-size:16px;border-bottom:2px dotted #717b8e}.project .contain-image{box-sizing:border-box;border:1px solid #717b8e;border-radius:5px;overflow:hidden}.project img{transition:all .5s ease;margin-bottom:-5px}.project img:hover{transform:scale(1.5) rotate(-10deg)}.project .project-about{list-style:none;margin:10px 0 10px 3%;padding:0}.project-about-barbershop,.project-about-confectionary,.project-about-sedona{display:none}.project-about li{position:relative;padding-left:20px}.project-about li::before{position:absolute;content:"";width:8px;height:3px;border-bottom:2px solid #2d3431;border-left:2px solid #2d3431;top:8px;left:0;transform:rotate(-45deg)}.project .github-code{margin:1%;color:#2d3431}.project .github-code:hover{color:#717b8e}.github-code-barbershop,.github-code-confectionary,.github-code-sedona{display:none}.btn-nav{font-size:0;text-align:center;margin-top:10px}.btn{display:inline-block;width:30%;padding:1%;text-decoration:none;font-size:16px;border-radius:5px}.btn-view{border:2px solid #2d3431;background-color:#2d3431;color:#ffecdb;margin-right:5px}.btn-view:active,.btn-view:hover{background-color:#ffecdb;color:#2d3431}.btn-less,.btn-more{border:2px solid #717b8e;background-color:#717b8e;color:#ffecdb}.btn-less:active,.btn-less:hover,.btn-more:active,.btn-more:hover{background-color:#ffecdb;color:#717b8e}.btn-less{display:none}.visible-block{display:block}.visible-inline-block{display:inline-block}.unvisible-block{display:none}
+/* media */
+@media screen and (max-width:1025px) {
+  .contacts {
+    display: block;
+    width:100%;
+    border-bottom: 2px dotted #717B8E;
+  }
+  .contacts .small-img,
+  .contacts .list-contact {
+    display: inline-block;
+    vertical-align: top;
+    /*outline: 2px solid green;*/
+    width: 65%;
+  }
+  .contacts .small-img {
+    width: 25%;
+    margin-bottom" -5px;
+  }
+  .big-img {
+    display: none;
+  }
+  .sklls-and-projects {
+    display: block;
+    width: 100%;
+    border: none;
+  }
+}
+@media screen and (max-width:496px) {
+  .my-name {
+   font-size: 0;
+   text-align: left;
+  }
+
+ .small-my-name {
+     display: block;
+     margin-top: -35px;
+     font-size: 20px;
+     line-height: 26px;
+   }
+
+   .project {
+     display: block;
+     width: 95%;
+   }
+ }

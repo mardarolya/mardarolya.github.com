@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Седона</title>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700&subset=latin,cyrillic" rel="stylesheet" type="text/css">
+    <link href="css/normalize.css" rel="stylesheet">
+    <link href="css/style-sedona.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="global-conteiner">
+      <header class="main-header">
+        <nav class="main-navigation">
+          <ul class="clearfix">
+            <li>
+              <a href="https://ru.wikipedia.org/wiki/%D0%A1%D0%B5%D0%B4%D0%BE%D0%BD%D0%B0">Информация</a>
+            </li>
+            <li>
+              <a href="https://www.tripadvisor.ru/LocationPhotos-g31352-Sedona_Arizona.html#17126006">Фото и видео</a>
+            </li>
+            <li> <img src="img/logo.png" alt="Логотип" width="138" height="70">
+            </li>
+            <li>
+              <a href="hotels.html">Гостинницы</a>
+            </li>
+            <li>
+              <a href="#map">Карта штата</a>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="main-intro">
+          <img src="img/main-intro.png" alt="Welcome Sedona" width="458" height="352">
+          <img src="img/main-intro-decoration.png" alt="Decoration" width="1200" height="57">
+        </div>
+
+        <div class="main-intro-text">
+          <h2 class="text-h2"> Седона &mdash; небольшой городок в Аризоне,
+                               заслуживающий большего!
+          </h2>
+          <p>   Рассмотрим 5 причин, по которым Седона круче, чем Гранд каньон!
+          </p>
+        </div>
+      </header>
+
+      <section class="features-bg clearfix">
+        <div class="features-blue ">
+          <span class="text-h2"> Настоящий городок
+          </span>
+          <span> &mdash; №1 &mdash;
+          </span>
+          <p> Седона &mdash; не аттракцион для туристов, там течет своя жизнь
+          </p>
+        </div>
+        <div class="features-img">
+          <img src="img/features-image-1.jpg" alt="Настоящий городок" width="800" height="400">
+        </div>
+      </section>
+
+      <section class="features-white-section clearfix">
+        <div class="features-white">
+          <!-- заменен h2 на span и далее тоже для этого блока  -->
+          <span class="text-h2 img-home"> Жилье
+          </span>
+          <p> Рекомендуем пожить в настоящем мотеле, все как в кино!
+          </p>
+        </div>
+        <div class="features-white">
+          <span class="text-h2 img-burg"> Еда
+          </span>
+          <p> Всегда заказывайте фирменный бургер, вы не разочаруетесь!
+          </p>
+        </div>
+        <div class="features-white">
+          <span class="text-h2 img-present"> Сувениры
+          </span>
+          <!-- поставила <br> потому что соседние колонки при такой ширене расстягиваются иначе,
+               тут тоже "но и местного" помещается в строку,
+               а в макете иначе -->
+          <p> Не только китайского, <br> но и местного производства!
+          </p>
+        </div>
+      </section>
+
+      <section class="features-bg clearfix">
+        <div class="features-img to-left">
+          <img src="img/features-image-2.jpg" alt="Мост" width="800" height="400">
+        </div>
+        <div class="features-blue to-right">
+          <span class="text-h2"> Там есть мост дьявола
+          </span>
+          <span> &mdash; №2 &mdash;
+          </span>
+          <p> Да, по нему можно пройти!
+              Если конечно вы осмелитесь
+          </p>
+        </div>
+
+      </section>
+
+      <section class="features bcg-grey clearfix">
+        <div class="features-grey">
+          <span class="text-h2"> Небольшая<br>
+                               площадь
+          </span>
+          <span> &mdash; №3 &mdash;
+          </span>
+          <p> Все достопримеча&shy;тельности находятся очень близко
+          </p>
+        </div>
+        <div class="features-grey">
+          <span class="text-h2"> Красивая<br>
+                               дорога
+          </span>
+          <span> &mdash; №4 &mdash;
+          </span>
+          <p> Ехать в Седону из Лас-Вегаса совсем нескучно!
+          </p>
+        </div>
+        <div class="features-grey">
+          <span class="text-h2"> Мало <br>
+                               туристов
+          </span>
+          <span> &mdash; №5 &mdash;
+          </span>
+          <p> Большинство едет в Гранд Каньон и толпится там!
+          </p>
+        </div>
+      </section>
+
+      <section class="search-hotel">
+        <div class="search-text">
+          <span> Заинтересовались?
+          </span>
+          <p> Укажите предполагаемые даты поездки, <br>
+              и мы покажем вам лучшие предложения гостиниц в Седоне
+          </p>
+          <a href="form-hotel.html" class="serch-hotel-label"> Поиск гостинницы в Седоне </a>
+         </div>
+         <!--Красивое решение без скрипта, но не по критериям...-->
+         <!-- <label for="for-show-form" class="serch-hotel-label"> Поиск гостинницы в Седоне </label>
+         <input type="checkbox" class="check-for-show-form" id="for-show-form"> -->
+         <form class="search-hotel-form" action="#" method="post">
+          <div>
+            <label for="date-begin">Дата заезда:</label>
+            <input type="text" id="date-begin" value="24 апреля 2016" class="btn date-travel">
+            <button class="btn icon-calendar" id="date-in" type="button"></button>
+          </div>
+          <div>
+            <label for="date-end">Дата выезда:</label>
+            <input type="text" id="date-end" value="4 июля 2016" class="btn date-travel">
+            <button class="btn icon-calendar" id="date-out" type="button"></button>
+          </div>
+          <div>
+            <label for="adult">Взрослые:</label>
+            <button class="btn icon-minus minus-adult" type="button"></button>
+            <input type="text" id="adult" value="1" class="btn adult-count" name="adult-count">
+            <button class="btn icon-plus plus-adult" type="button"></button>
+            <label for="child" class="child">Дети:</label>
+            <button class="btn icon-minus minus-child" type="button"></button>
+            <input type="text" id="child" value="1" class="btn child-count" name="child-count">
+            <button class="btn icon-plus plus-child" type="button"></button>
+          </div>
+          <button class="search-btn text-h2" type="submit">Найти</button>
+        </form>
+      </section>
+
+      <div class="map-footer">
+        <div id="map"></div>
+        <footer class="main-footer clearfix">
+          <div class="footer-section">
+            <a href="https://www.instagram.com/explore/tags/visitsedona/" class="hashtag"> #visitsedona </a>
+          </div>
+          <div class="footer-section">
+            <a href="https://twitter.com/sedonaaz" class="social icon-twitter">Twitter</a>
+            <a href="https://www.facebook.com/VisitSedona/" class="social icon-facebook">Facebook</a>
+            <a href="https://www.youtube.com/watch?v=qhdB9UmrRWM" class="social icon-youtube">Youtube</a>
+          </div>
+          <div class="footer-section">
+            <span class="website"> website by</span>
+              <a href="https://htmlacademy.ru" class="htmlacademy"></a>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <script src="https://api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU" type="text/javascript"></script>
+    <script src="js/map-and-buttons.min.js"></script>
+  </body>
+</html>

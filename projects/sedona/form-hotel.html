@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Седона</title>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700&subset=latin,cyrillic" rel="stylesheet" type="text/css">
+    <link href="css/normalize.css" rel="stylesheet">
+    <link href="css/style-sedona.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="global-conteiner">
+      <header class="main-header hotels">
+        <nav class="main-navigation inner-page">
+          <ul class="clearfix">
+            <li>
+              <a href="https://ru.wikipedia.org/wiki/%D0%A1%D0%B5%D0%B4%D0%BE%D0%BD%D0%B0">Информация</a>
+            </li>
+            <li>
+              <a href="https://www.tripadvisor.ru/LocationPhotos-g31352-Sedona_Arizona.html#17126006">Фото и видео</a>
+            </li>
+            <li>
+              <a href="index.html"><img src="img/logo.png" alt="Логотип" width="126"></a>
+            </li>
+            <li>
+              <a href="index.html#map">Карта штата</a>
+            </li>
+            <li>
+              <a href="hotels.html">Гостинницы</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+     <form class="search-hotel-form form-visible" action="#" method="post">
+       <div>
+         <label for="date-begin">Дата заезда:</label>
+         <input type="text" id="date-begin" value="24 апреля 2016" class="btn date-travel">
+         <button class="btn icon-calendar" id="date-in" type="button"></button>
+       </div>
+       <div>
+         <label for="date-end">Дата выезда:</label>
+         <input type="text" id="date-end" value="4 июля 2016" class="btn date-travel">
+         <button class="btn icon-calendar" id="date-out" type="button"></button>
+       </div>
+       <div>
+         <label for="adult">Взрослые:</label>
+         <button class="btn icon-minus minus-adult" type="button"></button>
+         <input type="text" id="adult" value="1" class="btn adult-count" name="adult-count">
+         <button class="btn icon-plus plus-adult" type="button"></button>
+         <label for="child" class="child">Дети:</label>
+         <button class="btn icon-minus minus-child" type="button"></button>
+         <input type="text" id="child" value="1" class="btn child-count" name="child-count">
+         <button class="btn icon-plus plus-child" type="button"></button>
+       </div>
+       <button class="search-btn text-h2" type="submit">Найти</button>
+      </form>
+
+      <div class="map-footer inner-page">
+        <footer class="main-footer clearfix">
+          <div class="footer-section">
+            <a href="https://www.instagram.com/explore/tags/visitsedona/" class="hashtag"> #visitsedona </a>
+          </div>
+          <div class="footer-section">
+            <a href="https://twitter.com/sedonaaz" class="social icon-twitter">Twitter</a>
+            <a href="https://www.facebook.com/VisitSedona/" class="social icon-facebook">Facebook</a>
+            <a href="https://www.youtube.com/watch?v=qhdB9UmrRWM" class="social icon-youtube">Youtube</a>
+          </div>
+          <div class="footer-section">
+            <span class="website"> website by</span>
+              <a href="https://htmlacademy.ru" class="htmlacademy"></a>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>
