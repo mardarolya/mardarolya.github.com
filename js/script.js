@@ -13,6 +13,10 @@ var BtnLessBarbershop = document.querySelector(".btn-less-barbershop");
 var ProjectAboutBarbershop = document.querySelector(".project-about-barbershop");
 var GithubCodeBarbershop = document.querySelector(".github-code-barbershop");
 
+var BtnMoreGoodInc = document.querySelector(".btn-more-goodinc");
+var BtnLessGoodInc = document.querySelector(".btn-less-goodinc");
+var ProjectAboutGoodInc = document.querySelector(".project-about-goodinc");
+var GithubCodeGoodInc = document.querySelector(".github-code-goodinc");
 
 BtnMoreConfectionary.addEventListener("click", function(event) {
   event.preventDefault();
@@ -60,4 +64,20 @@ BtnLessBarbershop.addEventListener("click", function(event) {
   BtnMoreBarbershop.classList.remove("unvisible-block");
   ProjectAboutBarbershop.classList.remove("visible-block");
   GithubCodeBarbershop.classList.remove("visible-inline-block");
+});
+
+BtnMoreGoodInc.addEventListener("click", function(event) {
+  event.preventDefault();
+  BtnLessGoodInc.classList.add("visible-inline-block");
+  BtnMoreGoodInc.classList.add("unvisible-block");
+  ProjectAboutGoodInc.classList.add("visible-block");
+  GithubCodeGoodInc.classList.add("visible-inline-block");
+});
+
+BtnLessGoodInc.addEventListener("click", function(event) {
+  event.preventDefault();
+  BtnLessGoodInc.classList.remove("visible-inline-block");
+  BtnMoreGoodInc.classList.remove("unvisible-block");
+  ProjectAboutGoodInc.classList.remove("visible-block");
+  GithubCodeGoodInc.classList.remove("visible-inline-block");
 });

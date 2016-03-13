@@ -65,8 +65,8 @@ img {
   border-top: none;
   background-image: repeating-linear-gradient(
                       -45deg,
-                      #FFFFFF 0px,
-                      #FFFFFF 2px,
+                      #e4e2df 0px,
+                      #e4e2df 2px,
                       transparent 2px,
                       transparent 4px);
 }
@@ -219,7 +219,8 @@ img {
 
 .project-about-confectionary,
 .project-about-sedona,
-.project-about-barbershop {
+.project-about-barbershop,
+.project-about-goodinc {
   display:none;
 }
 
@@ -251,7 +252,8 @@ img {
 
 .github-code-confectionary,
  .github-code-sedona,
- .github-code-barbershop {
+ .github-code-barbershop,
+ .github-code-goodinc {
   display: none;
 }
 
