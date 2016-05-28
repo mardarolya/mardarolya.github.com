@@ -18,6 +18,11 @@ var BtnLessGoodInc = document.querySelector(".btn-less-goodinc");
 var ProjectAboutGoodInc = document.querySelector(".project-about-goodinc");
 var GithubCodeGoodInc = document.querySelector(".github-code-goodinc");
 
+var BtnMoreInnosphera = document.querySelector(".btn-more-innosphera");
+var BtnLessInnosphera = document.querySelector(".btn-less-innosphera");
+var ProjectAboutInnosphera = document.querySelector(".project-about-innosphera");
+var GithubCodeInnosphera = document.querySelector(".github-code-innosphera");
+
 BtnMoreConfectionary.addEventListener("click", function(event) {
   event.preventDefault();
   BtnLessConfectionary.classList.add("visible-inline-block");
@@ -80,4 +85,20 @@ BtnLessGoodInc.addEventListener("click", function(event) {
   BtnMoreGoodInc.classList.remove("unvisible-block");
   ProjectAboutGoodInc.classList.remove("visible-block");
   GithubCodeGoodInc.classList.remove("visible-inline-block");
+});
+
+BtnMoreInnosphera.addEventListener("click", function(event) {
+  event.preventDefault();
+  BtnLessInnosphera.classList.add("visible-inline-block");
+  BtnMoreInnosphera.classList.add("unvisible-block");
+  ProjectAboutInnosphera.classList.add("visible-block");
+  GithubCodeInnosphera.classList.add("visible-inline-block");
+});
+
+BtnLessInnosphera.addEventListener("click", function(event) {
+  event.preventDefault();
+  BtnLessInnosphera.classList.remove("visible-inline-block");
+  BtnMoreInnosphera.classList.remove("unvisible-block");
+  ProjectAboutInnosphera.classList.remove("visible-block");
+  GithubCodeInnosphera.classList.remove("visible-inline-block");
 });
