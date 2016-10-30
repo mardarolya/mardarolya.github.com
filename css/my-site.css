@@ -215,15 +215,17 @@ img {
   margin: 10px 0;
   margin-left: 3%;
   padding: 0;
-}
 
-.project-about-confectionary,
-.project-about-sedona,
-.project-about-barbershop,
-.project-about-goodinc,
-.project-about-innosphera {
   display:none;
 }
+
+// .project-about-confectionary,
+// .project-about-sedona,
+// .project-about-barbershop,
+// .project-about-goodinc,
+// .project-about-innosphera {
+//   display:none;
+// }
 
 .project-about li {
   position: relative;
@@ -245,18 +247,20 @@ img {
 .project .github-code {
   margin: 1%;
   color: #2D3431;
+
+  display: none;  
 }
 
 .project .github-code:hover {
   color: #717B8E;
 }
 
-.github-code-confectionary,
- .github-code-sedona,
- .github-code-barbershop,
- .github-code-goodinc {
-  display: none;
-}
+// .github-code-confectionary,
+//  .github-code-sedona,
+//  .github-code-barbershop,
+//  .github-code-goodinc {
+//   display: none;
+// }
 
 .btn-nav {
   font-size: 0;
