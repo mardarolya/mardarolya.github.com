@@ -19,7 +19,7 @@ var Pokedex;
             }
             PokemonView.prototype.allInfo = function (data) {
                 this.pokemonName = data.name;
-                this.pokemonImage = "http://pokeapi.co/media/img/" + data.pkdx_id + ".png";
+                this.pokemonImage = "image/" + data.pkdx_id + ".png";
                 var listOfTypes = "";
                 for (var i = 0, max = data["types"].length; i < max; i++) {
                     if (listOfTypes == "") {
