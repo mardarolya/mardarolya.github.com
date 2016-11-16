@@ -207,7 +207,7 @@ img {
 }
 
 .project img:hover {
-  transform: scale(1.5) rotate(-10deg);
+  transform: scale(1.1);
 }
 
 .project .project-about {

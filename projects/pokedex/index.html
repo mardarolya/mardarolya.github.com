@@ -24,10 +24,9 @@
         </div>
       </section>
       <div class="col-sm-12 relative-content">					
-        <section class="col-md-7">
-          <div class="contain-pokemon"></div>
+        <section class="col-md-7 contain-pokemon">
           <div ng-repeat="pokemon in c.list | filter : searchType : type" class="col-sm-4">
-            <div ui-sref="Pokemon({ pokemonId: pokemon.id })" class="pokemon-card">
+            <div ui-sref="Pokemon({ pokemonId: pokemon.id })" id="card-{{pokemon.id}}" class="pokemon-card">
               <div class="image"><img src="{{pokemon.image}}" alt="{{pokemon.name}}"></div>
               <h2>{{pokemon.name}}</h2>
               <div class="pokemon-type"><span ng-repeat="typePk in pokemon.type" class="{{typePk}}">{{typePk}}</span></div>
