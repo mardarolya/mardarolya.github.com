@@ -9,12 +9,13 @@
     <title>TestApp</title>
   </head>
   <body  ng-app="TestApp" ng-controller="taskController as c" layout="column">
-    <div class="conteiner" layout="row">
+    <md-progress-linear md-mode="indeterminate" ng-show="loading"></md-progress-linear>
+    <div class="conteiner" layout="row" ng-show="!loading">
       <md-sidenav md-is-locked-open="true" class="dark-background">
         <div layout="column" class="conteiner-sidebar">
           <md-list-item class="user">
             <span class="with-frame">
-              <img ng-src="images/TrevorReyes.jpg" class="md-avatar" alt="Trevor Reyes" width="50" height="50">  
+              <img ng-src="images/TrevorReyes.jpg" class="md-avatar" width="50" height="50">  
             </span>             
             <span class="name-user">
               {{currentUser}}
@@ -32,12 +33,12 @@
           </div>
 
           <div ng-repeat="project in projects" class="item-project">
-              <md-button class="full-width list-item">
+              <md-button class="full-width list-item" ng-click="c.getTasks(project.Project.id)">
                 <span class="to-left">
-                  {{project.name}}
+                  {{project.Project.title}}
                 </span>
                 <span class="to-right">
-                  {{project.tasks}}
+                  {{project.Project.task_count}}
                 </span>                
               </md-button>  
           </div> 
