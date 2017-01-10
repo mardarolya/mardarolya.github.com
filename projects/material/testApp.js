@@ -92,8 +92,7 @@ var testApp = angular.module("TestApp", ["ngMaterial"])
       if (currentSession) {
         $http.get(way + '/session?session='+currentSession)
             .then(function (data) {
-
-               getInfo(data.data.session);
+               getInfo(currentSession);
             }, function (error) {
                console.log(error);
             });   
