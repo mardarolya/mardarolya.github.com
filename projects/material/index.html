@@ -73,10 +73,10 @@
               {{task.date}}
             </span>
             <md-card>
-              <md-card-content ng-repeat = "name in task.names" ng-click="c.showPanel('taskView', name.name, name.description)">
+              <md-card-content ng-repeat = "name in task.names" ng-click="c.showPanel('taskView', name.Task.title, '')">
                 <md-radio-group ng-model="data.group1">
                   <md-radio-button class="md-primary" value="false">
-                    <span> {{name.name}}</span>
+                    <span> {{name.Task.title}}</span>
                   </md-radio-button>
                 </md-radio-group>
               </md-card-content>
@@ -129,7 +129,7 @@
           <md-button class="md-fab check-task" aria-label="Check task" ng-click="c.okPanel()" ng-show="!isOpenTask">
             <i class="icons8-checkmark"></i>
           </md-button>  
-      </md-button>
+      <!-- </md-button> -->
         </div>
       </div>
     </div>

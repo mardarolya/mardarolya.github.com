@@ -14,7 +14,7 @@ var testApp = angular.module("TestApp", ["ngMaterial"])
     //                 {date: "Sunday (11.06.2016)",  names: [{name: "Brush teeth", description: ""}]},  
     //                 {date: "Monday (12.06.2016)",  names: [{name: "Buy a plane tickets", description: ""}, 
     //                                                {name: "Fly away to the Thailand", description: ""}]} ];
-
+    $scope.tasks = [{date: "Today", names: []}];
     $scope.showRightPanel = false; 
     $scope.isOpenTask = false; 
     $scope.isAddProject = false; 
@@ -30,6 +30,7 @@ var testApp = angular.module("TestApp", ["ngMaterial"])
 
     var way = "https://api-test-task.decodeapps.io";
     var currentSession = "";
+    var currentId = 0;
 
     this.showPanel = function(page, head, body) {
 	    $scope.panelHeader = head;
@@ -67,21 +68,50 @@ var testApp = angular.module("TestApp", ["ngMaterial"])
 
     this.okPanel = function(){
     	if (this.pageName == 'project') {
-    		$scope.projects.push({name: this.newProject, tasks: 0});
+    		// $scope.projects.push({name: this.newProject, tasks: 0});
+        $http.post(way + '/projects/project', {"session": currentSession, "Project": {"title": this.newProject}})
+          .then(function (data) {
+                  getProgects(currentSession);
+                },
+                function (error){
+                  console.log(error);
+                });
     	}
 
     	if (this.pageName == 'taskCreate') {
-    		 $scope.tasks[$scope.tasks.length-1].names.push({name: this.newTaskName, description: this.newTaskDescription});
-    	}
+    		 // $scope.tasks[$scope.tasks.length-1].names.push({name: this.newTaskName, description: this.newTaskDescription});
+    	   var body = {
+                      "session": currentSession,
+                      "Project": {
+                          "id": currentId
+                      },
+                      "Task": {
+                          "title": this.newTaskName,
+                          "description": this.newTaskDescription
+                      }
+                  };
+         $http.post(way + '/tasks/task', body)
+          .then(function (data) {
+                  getProgects(currentSession);
+                  getProjectTasks(currentId);
+                },
+                function (error){
+                  console.log(error);
+                });
+      }
     	this.closePanel();
     }
 
     this.getTasks = function(id) {
-      console.log(currentSession);
-      // console.log('getTask');
-       $http.get(way + '/tasks?session=' + currentSession + '&project_id=' + id + '&paging_size=20&paging_offset=10')
+      getProjectTasks(id);
+    }
+
+    function getProjectTasks(id) {
+      currentId = id;
+      $http.get(way + '/tasks?session=' + currentSession + '&project_id=' + id + '&paging_size=20&paging_offset=10')
             .then(function (data) {
                console.log(data);
+               $scope.tasks[0].names = data.data.tasks;
             }, function (error) {
                console.log(error);
             });  
@@ -94,10 +124,15 @@ var testApp = angular.module("TestApp", ["ngMaterial"])
             .then(function (data) {
                getInfo(currentSession);
             }, function (error) {
-               console.log(error);
+               postUser();
             });   
       } else {
-        $http.post(way + '/signup', {"New item":"Tomas New"})
+        postUser();
+      }
+    }
+
+    function postUser() {
+      $http.post(way + '/signup', {"New item":""})
           .then(function (data) {
                   setCookie("mySession", data.data.session);
                   getInfo(data.data.session);
@@ -105,8 +140,6 @@ var testApp = angular.module("TestApp", ["ngMaterial"])
                 function (error){
                   console.log(error);
                 });
-
-      }
     }
 
     function getInfo(session) {
@@ -118,19 +151,23 @@ var testApp = angular.module("TestApp", ["ngMaterial"])
                       var photo = document.querySelector(".with-frame img");
                       photo.src = data.data.Account.image_url;
                       
-                      $http.get(way + '/projects?session='+session)
-                           .then(
-                              function (data) {
-                                $scope.projects = data.data.projects;
-                                $scope.loading = false;
-                              },                     
-                              function (error) {
-                                console.log(error);
-                              });  
+                      getProgects(session);
                     },
                     function (error) {
                       console.log(error);
                     });      
+    }
+
+    function getProgects(session) {
+      $http.get(way + '/projects?session='+session)
+           .then(
+              function (data) {
+                $scope.projects = data.data.projects;
+                $scope.loading = false;
+              },                     
+              function (error) {
+                console.log(error);
+              });  
     }
 
     function getCookie(name) {
