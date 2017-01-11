@@ -18,6 +18,7 @@ var testApp = angular.module("TestApp", ["ngMaterial"])
     $scope.showRightPanel = false; 
     $scope.isOpenTask = false; 
     $scope.isAddProject = false; 
+    $scope.isEditProject = false; 
     $scope.isAddTask = false; 
 
     $scope.panelHeader = "";
@@ -50,9 +51,31 @@ var testApp = angular.module("TestApp", ["ngMaterial"])
         $scope.showRightPanel = true; 
       }
 
+      if (page == 'projectEdit') {
+        $scope.isEditProject = true; 
+        $scope.showRightPanel = true;
+        for (var ii = 0, maxii = $scope.projects.length; ii < maxii; ii++) {
+          if ($scope.projects[ii].Project.id == currentId) {
+            this.newProject = $scope.projects[ii].Project.title;
+            break;
+          }
+        } 
+        
+      }
+
       if (page == 'taskCreate') {
         $scope.isAddTask = true; 
         $scope.showRightPanel = true; 
+      }
+
+      if (page == 'taskEdit') {
+        $scope.isAddTask = true; 
+        $scope.showRightPanel = true; 
+        $scope.isOpenTask = false;
+        this.newTaskName = head;
+        this.newTaskDescription = body;
+        $scope.panelHeader = "Edit task";
+        $scope.panelBody = "";
       }
     }
 
@@ -65,6 +88,7 @@ var testApp = angular.module("TestApp", ["ngMaterial"])
       $scope.isOpenTask = false; 
       $scope.isAddProject = false; 
       $scope.isAddTask = false; 
+      $scope.isEditProject = false; 
       $scope.panelHeader = "";
       $scope.panelBody = "";
 
@@ -87,6 +111,22 @@ var testApp = angular.module("TestApp", ["ngMaterial"])
                 });
     	}
 
+      if (this.pageName == 'projectEdit') {
+        var body = {"session": currentSession, 
+                    "Project": {
+                      "id": currentId,
+                      "title": this.newProject
+                      }
+                    };
+        $http.post(way + '/projects/project', body)
+          .then(function (data) {
+                  getProgects(currentSession);
+                },
+                function (error){
+                  console.log(error);
+                });
+      }
+
     	if (this.pageName == 'taskCreate') {
     		 // $scope.tasks[$scope.tasks.length-1].names.push({name: this.newTaskName, description: this.newTaskDescription});
     	   var body = {
@@ -95,6 +135,28 @@ var testApp = angular.module("TestApp", ["ngMaterial"])
                         "id": currentId
                       },
                       "Task": {
+                        "title": this.newTaskName,
+                        "description": this.newTaskDescription                      
+                      }
+                  };
+         $http.post(way + '/tasks/task', body)
+          .then(function (data) {
+                  getProgects(currentSession);
+                },
+                function (error){
+                  console.log(error);
+                });
+      }
+
+      if (this.pageName == 'taskEdit') {
+         // $scope.tasks[$scope.tasks.length-1].names.push({name: this.newTaskName, description: this.newTaskDescription});
+         var body = {
+                      "session": currentSession,
+                      "Project": {
+                        "id": currentId
+                      },
+                      "Task": {
+                        "id" : currentTask,
                         "title": this.newTaskName,
                         "description": this.newTaskDescription                      
                       }
