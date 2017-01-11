@@ -33,7 +33,7 @@
           </div>
 
           <div ng-repeat="project in projects" class="item-project">
-              <md-button class="full-width list-item" ng-click="c.getTasks(project.Project.id)">
+              <md-button class="full-width list-item" ng-click="c.getTasks(project.Project.id)" id=id_{{project.Project.id}}>
                 <span class="to-left">
                   {{project.Project.title}}
                 </span>
@@ -57,15 +57,32 @@
 
       <md-content flex> 
         <md-input-container md-no-float="" class="md-block search">
-          <input>
+          <input ng-model="c.searchTask">
         </md-input-container>
 
-        <md-button class="button-search">
+        <md-button class="button-search" ng-show="c.searchTask == ''">
           <i class="icons8-search"></i>
         </md-button>
           
-        <md-button class="icons8-more button-more">
+        <md-button class="icons8-more button-more" onclick="document.querySelector('.dropdown-menu').classList.toggle('display-none')">
         </md-button>
+
+        <div class="dropdown-menu display-none">
+          <md-button> Edit project
+          </md-button>
+
+          <md-button ng-click="c.deleteProject()"> Delete project
+          </md-button>
+        </div>        
+
+        <div layout="column" class="complete" ng-show="tasks.length==0">
+          <span>
+            <i class= "icons8-todo-list">
+            </i>
+            <br>
+            Have a good day
+          </span>
+        </div>
 
         <div layout="column" class="task-conteiner">
           <div ng-repeat = "task in tasks" class="task">
@@ -73,11 +90,11 @@
               {{task.date}}
             </span>
             <md-card>
-              <md-card-content ng-repeat = "name in task.names" ng-click="c.showPanel('taskView', name.Task.title, '')">
+              <md-card-content ng-repeat = "name in task.names | filter:c.searchTask">
                 <md-radio-group ng-model="data.group1">
-                  <md-radio-button class="md-primary" value="false">
-                    <span> {{name.Task.title}}</span>
+                  <md-radio-button class="md-primary" value="false" ng-click="c.taskDone(name.id)">
                   </md-radio-button>
+                  <span class="task-name" ng-click="c.showPanel('taskView', name.name, name.description, name.id)"> {{name.name}}</span>
                 </md-radio-group>
               </md-card-content>
             </md-card>
@@ -98,7 +115,7 @@
             <h2> {{panelHeader}} </h2>
             <div class="panel-actions"  ng-show = "isOpenTask">
               <md-button class="edit icons8-edit"></md-button>
-              <md-button class="delete icons8-delete"></md-button>
+              <md-button class="delete icons8-delete" ng-click="c.taskDelete()"></md-button>
             </div>
           </div>
           <div class="panel-body" ng-show = "isOpenTask"> 

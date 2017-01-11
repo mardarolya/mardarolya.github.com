@@ -102,12 +102,34 @@ md-list-item.user {
 	color: #6b6b99;
 }
 
+.complete {
+	height: 80%;
+	width: 100%;
+}
+
+.complete span {
+	display: block;
+	margin: 30% auto 0 auto;
+	color: #b1b1c8;
+	vertical-align: middle;
+	text-align: center;
+	font-size: 24px;
+}
+
+.complete i {
+	font-size: 200px;
+	margin-left: 40px;
+}
+
 .list-item {
 	font-size: 15px;
 	line-height: 40px;
 	margin: 0;
 }
 
+.list-item.active {
+	background-color: #6b6b99;
+}
 
 .to-left {
 	float: left;
@@ -157,6 +179,16 @@ md-content .search {
 
 .button-more {
 	right: 0;
+}
+
+.display-none {
+	display: none;
+}
+
+.dropdown-menu {
+	position: absolute;
+	right: 0;
+	top: 50px;
 }
 
 .task-conteiner {
@@ -213,6 +245,15 @@ md-content .search {
 	margin-left: 15px;
 }
 
+md-radio-button {
+	display: inline-block;
+}
+
+md-radio-button:focus {
+	outline: none;
+	box-shadow: none;
+}
+
 md-radio-button .md-ink-ripple .md-off, 
 md-radio-button .md-ink-ripple .md-on {
 	border-width: 3px;	
@@ -226,6 +267,19 @@ md-radio-button .md-label {
 	margin-left: 55px;
 	border-left: 2px solid #f4f4f4;
 	padding-left: 15px;
+}
+
+.task-name {
+	display: inline-block;
+	border-left: 2px solid #f4f4f4;
+	padding-left: 15px;
+    height: 36px;
+    cursor: pointer;
+}
+
+.task-name:focus {
+	outline: none;
+	box-shadow: none;
 }
 
 .md-fab.add-task,

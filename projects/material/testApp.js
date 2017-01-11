@@ -27,18 +27,22 @@ var testApp = angular.module("TestApp", ["ngMaterial"])
     this.pageName = "";
     this.newTaskName = "";
     this.newTaskDescription = "";
+    this.searchTask = "";
 
     var way = "https://api-test-task.decodeapps.io";
     var currentSession = "";
     var currentId = 0;
+    var currentTask = 0;
 
-    this.showPanel = function(page, head, body) {
+    this.showPanel = function(page, head, body, id) {
+
 	    $scope.panelHeader = head;
       $scope.panelBody = body;
       this.pageName = page;
       if (page == 'taskView') {
         $scope.isOpenTask = true; 
         $scope.showRightPanel = true; 
+        currentTask = parseInt(id);
       }
 
       if (page == 'project') {
@@ -53,6 +57,10 @@ var testApp = angular.module("TestApp", ["ngMaterial"])
     }
 
     this.closePanel = function(){
+      close();
+    }
+
+    function close() {
       $scope.showRightPanel = false; 
       $scope.isOpenTask = false; 
       $scope.isAddProject = false; 
@@ -64,6 +72,7 @@ var testApp = angular.module("TestApp", ["ngMaterial"])
       this.pageName = "";
       this.newTaskName = "";
       this.newTaskDescription = "";
+      currentTask = 0;
     }
 
     this.okPanel = function(){
@@ -83,17 +92,16 @@ var testApp = angular.module("TestApp", ["ngMaterial"])
     	   var body = {
                       "session": currentSession,
                       "Project": {
-                          "id": currentId
+                        "id": currentId
                       },
                       "Task": {
-                          "title": this.newTaskName,
-                          "description": this.newTaskDescription
+                        "title": this.newTaskName,
+                        "description": this.newTaskDescription                      
                       }
                   };
          $http.post(way + '/tasks/task', body)
           .then(function (data) {
                   getProgects(currentSession);
-                  getProjectTasks(currentId);
                 },
                 function (error){
                   console.log(error);
@@ -106,15 +114,49 @@ var testApp = angular.module("TestApp", ["ngMaterial"])
       getProjectTasks(id);
     }
 
-    function getProjectTasks(id) {
-      currentId = id;
-      $http.get(way + '/tasks?session=' + currentSession + '&project_id=' + id + '&paging_size=20&paging_offset=10')
-            .then(function (data) {
-               console.log(data);
-               $scope.tasks[0].names = data.data.tasks;
-            }, function (error) {
-               console.log(error);
-            });  
+    this.taskDone = function(id) {
+      var body = {
+        "session": currentSession,
+        "Task": {
+          "id": id
+        }
+      }
+      $http.post(way + '/tasks/task/complite', body)
+          .then(function (data) {
+                  getProgects(currentSession) 
+                },
+                function (error){
+                  console.log(error);
+                });
+    }
+
+    this.taskDelete = function() {
+      if (currentTask != 0) {
+        $http.delete(way + '/tasks/task?session='+currentSession+'&task_id='+currentTask)
+           .then(
+              function () {
+                close();
+                getProgects(currentSession);
+              },                     
+              function (error) {
+                console.log(error);
+              });  
+      }
+    }
+
+    this.deleteProject = function(){
+      if (currentId != 0) {
+        $http.delete(way + '/projects/project?session='+currentSession+'&project_id='+currentId)
+           .then(
+              function () {
+                close();
+                currentId = 0;
+                getProgects(currentSession);
+              },                     
+              function (error) {
+                console.log(error);
+              });  
+      }
     }
 
     function letsGo(){
@@ -150,7 +192,6 @@ var testApp = angular.module("TestApp", ["ngMaterial"])
                       $scope.currentUser = data.data.Account.username;
                       var photo = document.querySelector(".with-frame img");
                       photo.src = data.data.Account.image_url;
-                      
                       getProgects(session);
                     },
                     function (error) {
@@ -164,10 +205,100 @@ var testApp = angular.module("TestApp", ["ngMaterial"])
               function (data) {
                 $scope.projects = data.data.projects;
                 $scope.loading = false;
+                if (currentId == 0) {
+                  currentId = $scope.projects[0].Project.id;
+                }
+                getProjectTasks(currentId);
               },                     
               function (error) {
                 console.log(error);
               });  
+    }
+
+    function getProjectTasks(id) {
+      currentId = id; 
+      $http.get(way + '/tasks?session=' + currentSession + '&project_id=' + id + '&paging_size=20&paging_offset=0')
+            .then(function (data) {
+               var tasks = data.data.tasks;
+               var dtParts = [];
+               $scope.tasks = [];
+               for(var i = 0, max = tasks.length; i < max; i++) {
+                 dtParts = ((tasks[i].Task.created_at).split(" ")[0]).split("-");
+                 var date = dtParts[2] + "." + dtParts[1] + "." +dtParts[0];
+                 var done = false;
+                 for (var k = 0, maxk = $scope.tasks.length; k < maxk; k ++) {
+                  if ($scope.tasks[k].date == date) {
+                    $scope.tasks[k].names.push({name: tasks[i].Task.title,
+                                                description: tasks[i].Task.description,
+                                                id: tasks[i].Task.id});
+                    done = true;
+                    break;
+                  } 
+                 }
+
+                 if (done == false) {
+                  $scope.tasks.push({date: date, names: [{name: tasks[i].Task.title,
+                                                          description: tasks[i].Task.description,
+                                                          id: tasks[i].Task.id}]});
+                 }
+               }
+
+               for (var j = 0, maxj = $scope.tasks.length; j < maxj; j ++) {
+                  dtParts = $scope.tasks[j].date.split(".");
+                  var dt = new Date(),
+                      dtTask = new Date(parseInt(dtParts[2]), parseInt(dtParts[1]-1), parseInt(dtParts[0])),
+                      d = dt.getDate(),
+                      m = dt.getMonth(),
+                      y = dt.getFullYear(),
+                      nameWeekDay = "";
+                  
+                  if (d == parseInt(dtParts[0]) && m == (parseInt(dtParts[1]) - 1) && y == parseInt(dtParts[2])) {
+                    $scope.tasks[j].date = "Today";
+                  } else if ((d == parseInt(dtParts[0]) + 1) && m == (parseInt(dtParts[1]) - 1) && y == parseInt(dtParts[2])) {
+                    $scope.tasks[j].date = "Tomorrow";
+                  } else {
+                    var weekDay = dtTask.getDay();
+                    var nameWeekDay = "";
+                    switch(weekDay) {
+                      case 0: 
+                        nameWeekDay = "Sunday"
+                        break
+                      case 1: 
+                        nameWeekDay = "Monday"
+                        break
+                      case 2: 
+                        nameWeekDay = "Tuesday"
+                        break
+                      case 3: 
+                        nameWeekDay = "Wednesday"
+                        break
+                      case 4: 
+                        nameWeekDay = "Thursday"
+                        break
+                      case 5: 
+                        nameWeekDay = "Friday"
+                        break
+                      case 6: 
+                        nameWeekDay = "Saturday"
+                        break 
+                      default: 
+                        nameWeekDay = "";   
+                    }
+                    $scope.tasks[j].date = nameWeekDay + " (" + $scope.tasks[j].date + ")";
+                  }
+                }
+                var oldEl = document.querySelector(".item-project .active");
+                if (oldEl) {
+                  oldEl.classList.remove("active");  
+                }   
+                var newEl = document.querySelector(".item-project #id_"+currentId);
+                if (newEl) {
+                  newEl.classList.add("active");  
+                } 
+            },              
+            function (error) {
+               console.log(error);
+            });  
     }
 
     function getCookie(name) {
