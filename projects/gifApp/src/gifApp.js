@@ -1,0 +1,21 @@
+
+var gifApp=angular.module("GifApp",["ngMaterial"]).controller("gifController",["$scope","$http",function($scope,$http){$scope.images=[];$scope.offset=0;$scope.popupOpen=false;$scope.searchTags="";$scope.uploadF=false;$scope.isMyGalleryOpen=false;var way="http://api.giphy.com";var currentUrl="";var interval;$scope.uploadFileName="";$scope.uploadFileTags="";$scope.uploadFileUrl;this.uploadFile=function(){console.log($scope.uploadF);var oldImage=document.querySelector(".popup .img-original");oldImage.src="#";oldImage.classList.add("display-none");$scope.uploadF=true;$scope.popupOpen=true;}
+this.getFile=function(){var file=document.querySelector("#yourFile");file=file.files[0];$scope.uploadFileUrl=file;console.log($scope.uploadFileUrl);}
+this.allCorrect=function(){if($scope.uploadFileName!=""&&$scope.uploadFileTags!=""){return true;}else{return false;}}
+this.saveFile=function(){var body={username:"",api_key:"dc6zaTOxFJmzC",file:$scope.uploadFileUrl,tags:$scope.uploadFileTags}
+$http.put("http://upload.giphy.com/v1/gifs",body).then(function(data){console.log(data);var myNewGif=data.data.id;var myGifs;myGifs=localStorage.getItem("gifs");if(myGifs&&myGifs!=""){myGifs=myGifs+","+id.toString();localStorage.setItem("gifs",myGifs);}else{localStorage.setItem("gifs",id.toString());}
+$scope.popupOpen=false;},function(error){console.log(error);$scope.popupOpen=false;});}
+this.showMyGallery=function(){openMyGallery();}
+function openMyGallery(){var myGifs;clearInterval(interval);myGifs=localStorage.getItem("gifs");if(myGifs&&myGifs!=""){$scope.isMyGalleryOpen=true;$scope.images=[];$scope.offset=0;currentUrl="/v1/gifs?api_key=dc6zaTOxFJmzC&ids="+myGifs;letsGo();}else{if($scope.isMyGalleryOpen==true){goToTrending();}else{alert("Gallery is empty :(");}}}
+function goToTrending(){clearInterval(interval);$scope.images=[];$scope.isMyGalleryOpen=false;$scope.searchTags="";currentUrl="/v1/gifs/trending?api_key=dc6zaTOxFJmzC";letsGo();goFuture();}
+this.goToTrend=function(){goToTrending();}
+this.notInGallery=function(id){var myGifs;myGifs=localStorage.getItem("gifs");if(myGifs&&myGifs.indexOf(id.toString())!=-1){return false;}else{return true;}}
+this.addToMyCollection=function(id){var myGifs;myGifs=localStorage.getItem("gifs");if(myGifs&&myGifs!=""){myGifs=myGifs+","+id.toString();localStorage.setItem("gifs",myGifs);}else{localStorage.setItem("gifs",id.toString());}}
+this.removeFromMyCollection=function(id){var myGifs;myGifs=localStorage.getItem("gifs");if(myGifs&&myGifs!=""&&myGifs.indexOf(id.toString())!=-1){myGifs=myGifs.replace(id.toString()+",","");myGifs=myGifs.replace(id.toString(),"");localStorage.setItem("gifs",myGifs);}
+if($scope.isMyGalleryOpen==true){if(myGifs!=""){openMyGallery();}else{goToTrending();}}}
+this.searchByTags=function(){setTimeout(function(){$scope.images=[];$scope.offset=0;var newSearch=$scope.searchTags;var newUrl="/v1/gifs/search?q="+newSearch.replace(" ","+")+"&api_key=dc6zaTOxFJmzC";currentUrl=newUrl;clearInterval(interval);letsGo();goFuture()},3000);}
+this.openPopup=function(url){$scope.uploadF=false;var newImg=document.createElement("img");newImg.src=url;newImg.classList.add("img-original");var imgConteiner=document.querySelector(".card-popup");var oldImg=document.querySelector(".card-popup .img-original");imgConteiner.removeChild(oldImg);imgConteiner.appendChild(newImg);$scope.popupOpen=true;}
+function letsGo(){$http.get(way+currentUrl+"&offset="+$scope.offset).then(function(data){var inputData=data.data.data;var tags;var length=$scope.images.length;for(var i=0,max=inputData.length;i<max;i++){tags=(inputData[i].slug).split("-");tags.pop();$scope.images.push(inputData[i]);$scope.images[length+i].slug=tags.join(", ");}
+$scope.loading=false;$scope.offset=$scope.offset+25;},function(error){console.log(error);});}
+function goFuture(){interval=setInterval(function(){if($scope.images.length>0){var lastCard=document.querySelector(".gif-conteiner").lastElementChild;var height=document.documentElement.clientHeight;var top=lastCard.getBoundingClientRect().top;if(top<=height){letsGo();}}},1000);}
+angular.element(document).ready(function(){$scope.loading=true;goToTrending();});}]).directive('customOnChange',function(){return{restrict:'A',link:function(scope,element,attrs){var onChangeHandler=scope.$eval(attrs.customOnChange);element.bind('change',onChangeHandler);}};});
