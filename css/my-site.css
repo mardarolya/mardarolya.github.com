@@ -38,7 +38,7 @@ http://color.romanuke.com/tsvetovaya-palitra-2653/
 .icon-location-outline:before { content: '\e805'; }
 
 body {
-  background-color: #FFECDB;
+  background-color: white;
   color: #2D3431;
   font-size: 16px;
   line-height: 21px;
@@ -63,10 +63,11 @@ img {
   margin: 0 auto;
   border: 2px dotted #717B8E;
   border-top: none;
+  box-shadow: 2px 0 5px lightgrey, -2px 0 5px lightgrey;
   background-image: repeating-linear-gradient(
                       -45deg,
-                      #e4e2df 0px,
-                      #e4e2df 2px,
+                      #faf9f7 0px,
+                      #faf9f7 2px,
                       transparent 2px,
                       transparent 4px);
 }
@@ -94,6 +95,7 @@ img {
 
 .contacts img {
   border-radius: 5px;
+  border: 1px solid lightgrey;
 }
 
 .contacts .small-img {
