@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1">
+    <title>Автошкола</title>
+    <link href="css/normalize.css" rel="stylesheet"/>
+    <link href="fonts/fontello/css/autoclub.css" rel="stylesheet"/>
+    <link href="css/autoclub.css" rel="stylesheet"/>   
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon"> 
+  </head>
+  <body>
+    <input type="checkbox" id="sendApp"></input>
+    <div class="send-app">
+      <div class="form">
+        <form method="post" action="php/form-to-email.php" name="sendTheApp">
+          <label for="sendApp" class="close-form"></label>
+          <h2>Заявка на обучение</h2>
+          <div class="form-row clearfix">
+              <label for="name" required>Ваше имя</label>
+              <input type="text" id="name" name="name">
+          </div>
+          <div class="form-row clearfix">
+              <label for="phone" required>Ваш телефон</label>
+              <input type="tel" id="phone" name="phone">
+          </div>
+          <div class="form-row clearfix">
+              <label for="mail" required>Ваша почта</label>
+              <input type="email" id="mail" name="mail">
+          </div>
+          <div class="form-row clearfix">
+              <label for="comment">Комментарий</label>
+              <textarea id="comment" row="4" name="comment"></textarea>
+          </div>
+          <div class="form-row clearfix">
+            <input type="submit" name='submit' value="Отправить" id="submit">  
+            <!-- <button type="submit">Отправить</button> -->
+          </div>          
+        </form>
+        
+      </div>
+    </div>
+
+    <header class="header">
+        <nav class="conteiner navigation">
+          <ul>
+            <li><label for="sendApp" class="like-button big-screen">Подать заявку</label></li>
+            <li><a href="#price">Цены и расписание</a></li>
+            <li><a href="#contacts">Контакты</a></li>
+            <li><a href="test/test.html" id="toExam">Экзамен</a></li>
+            <li><a href="test/test.html" id="toTest">Тест on-line</a></li>
+            <li><label for="sendApp" class="like-button small-screen">Подать заявку</label></li>            
+          </ul>
+        </nav>
+    </header>
+
+    <div class="conteiner main-block clearfix">
+        <div class="short-info medium-4 small-12">
+          <ul>
+            <li><span class="txt icon-cab">  категория <span class="digit">"B"</span></span></li>
+            <li><span class="txt icon-calendar">  месяца <span class="digit">2.5</span></span></li>
+            <li><span class="txt icon-rouble">  в рассрочку <span class="digit">9т.</span></span></li>
+          </ul>
+        </div>
+        <div class="logo medium-4 small-12">
+          <img src="img/logo.png" alt="Автоклуб Донецк" height="170" width="auto">
+        </div>
+        
+        <div class="contacts medium-4 small-12">
+          <ul>
+            <li><span class="icon-phone"> (071) 307 - 15 - 15</span></li>
+            <li><span class="icon-phone"> (0XX) XXX - XX - XX</span></li>
+            <li><span class="icon-mail-alt"> avtoclubdonetsk@gmail.com</span></li>
+            <li><span class="icon-location"> проспект Ильича 19ж, Донецк</span></li>
+            <li><a href="https://vk.com/club153931217" target="_blank"><span class="icon-vkontakte"> Следи за нами ВКонтакте!</a></span></li>
+          </ul>
+          <div class="small-menu">
+            <input type="checkbox" id="show_small_menu"></input>
+            <label for="show_small_menu"></label>
+            <ul>
+              <li><a href="#price">Цены и расписание</a></li>
+              <li><a href="#contacts">Контакты</a></li>
+              <li><a href="test/test.html">Экзамен on-line</a></li>
+              <li><a href="test/test.html">Тест on-line</a></li>
+            </ul>
+          </div>
+        </div>
+    </div>
+
+    <div class="small-screen-zayavka">
+        <label for="sendApp" class="like-button">Подать заявку</label>
+    </div>
+
+    <article class="conteiner carousel clearfix" id="carousel">
+      <div class="medium-8 carousel-image">
+        <div class="cont-image">
+          <img src="img/carousel-1.jpg" alt="Car" width="auto" height="430">
+        </div>        
+      </div>
+      <div class="medium-4">
+        <div class="text-grey">
+          <h2>Дополнительные занятия</h2>
+          <p> Милые дамы! Не уверено чувствуете себя на дороге? Мы поможем! Теперь вы можете заказать у нас дополнительные занятия по вождению на автомобилях Mercedes с автоматической коробкой передач.</p>        
+        </div>              
+      </div>
+      <button class="prev icon-left-open" id="prev"></button>  
+      <button class="next icon-right-open" id="next"></button>     
+    </article>
+
+    <article class="conteiner about-us clearfix">
+      <div class="medium-6">
+        <div class="cont-image">
+         <img src="img/autopark-1.jpg" alt="Автопарк"> 
+        </div>
+        <div class="cont-txt">
+          <h2>
+            Новый автопарк
+          </h2>
+          <p>
+            В нашем автопарке есть автомобили как с МКПП (механика), так и с АКПП (атомат)!
+            Вы можете выбрать для себя приоритет. У нас работают только атестированные инструктора - профессионалы своего дела. Они помогут вам не бояться дороги и уверенно чувствовать себя за рулем!
+          </p>
+        </div>
+      </div>
+      <div class="medium-6">
+        <div class="cont-image">
+          <img src="img/class-1.jpg" alt="Учебный класс"> 
+        </div>
+        <div class="cont-txt">
+          <h2>
+            Комфортные классы
+          </h2>
+          <p>
+            Наши учебные классы оснащены мультимедийным оборудованием, а занятия ведут преподаватели с профильным образованием и большим стажем работы.
+            Занятие постоянно сопровождается визуализацией примеров - ведь так гораздо быстрее и легче запоминается материал.
+          </p></div>
+      </div>
+    </article>
+
+    <article class="conteiner clearfix price-contacts">
+      <div class="medium-8">
+        <div class="panel price" id="price">
+          <h2>Цены</h2>
+          <p>Стоимость обучения - <b>9000</b> рублей. Вы получаете права категории <b>"B"</b> за <b>2,5</b> месяца (10 недель).</p>
+          <p>Мы предлагаем оплатить обучение в <b>РАССРОЧКУ</b>!</p>
+        </div>
+        <div class="panel important contacts" id="contacts">
+          <h2>Контакты</h2>
+          <ul>
+            <li><span class="icon-phone"> Наши телефоны:  (071) 307 - 15 - 15, (0XX) XXX - XX - XX</span></li>
+            <li><span class="icon-mail-alt"> Наша почта:  avtoclubdonetsk@gmail.com</span></li>
+            <li><a href="https://vk.com/club153931217" target="_blank"><span class="icon-vkontakte"> Присоединяйтесь к нашей группе ВКонтакте!</a></span></li>
+            <li><span class="icon-location"> Наш адрес:  проспект Ильича 19ж, Донецк</span></li>
+          </ul>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2669.616413435814!2d37.8315403160562!3d48.00179977921275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40e091b45c074eb5%3A0xf5064f8c1093ef89!2z0L_RgNC-0YHQv9C10LrRgiDQhtC70LvRltGH0LAsIDE5LCDQlNC-0L3QtdGG0YzQuiwg0JTQvtC90LXRhtGM0LrQsCDQvtCx0LvQsNGB0YLRjA!5e0!3m2!1sru!2sua!4v1508396632568" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="medium-4">
+        <aside class="doc">
+          <div class="cont-image">
+            <img src="img/doc.jpg" alt="Документы" height="auto" width="100%"> 
+          </div>
+          <div class="cont-txt">
+            <h2>
+              Необходимые документы
+            </h2>
+            <p>
+             <ul type="circle">
+               <li class="icon-doc-text"> Договор (предоставляется автошколой)</li>
+               <li class="icon-doc-text"> Копия паспорта</li>
+               <li class="icon-doc-text"> Копия ИНН</li>
+               <li class="icon-doc-text"> Медицинская справка водителя</li>
+               <li class="icon-doc-text"> Фотографии 3,5*4,5 (4 шт.)</li>
+               <li class="icon-doc-text"> Копия загранпаспорта (при наличии)</li>
+               <li class="icon-doc-text"> Копия удостоверения водителя (при наличии)</li>
+             </ul>
+            </p>
+          </div>
+        </aside>
+        <div class="to-start">
+          <a href="#" class="icon-up-big">В начало</a>
+        </div>
+      </div>
+    </article>
+
+    <footer class="footer clearfix">
+      <div class="conteiner">
+        <span class="autoclub">Автошкола "Автоклуб-Донецк"</span>
+        <span class="contacts">г.Донецк, проспект Ильича, 19Ж <br> (071) 307 - 15 - 15</span>
+      </div>      
+    </footer>
+
+    <script>
+      var toExam = document.getElementById("toExam");
+      toExam.onclick = function() { localStorage.setItem('autoclab.exam', 'true') }
+
+      var toTest = document.getElementById("toTest");
+      toTest.onclick = function() { localStorage.setItem('autoclab.exam', 'false)') }
+    </script>
+    <script src="js/carousel.js"></script>
+
+  </body>
