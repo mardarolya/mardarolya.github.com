@@ -16,28 +16,28 @@
     <input type="checkbox" id="sendApp"></input>
     <div class="send-app">
       <div class="form">
-        <form method="post" action="php/form-to-email.php" name="sendTheApp">
+        <form action="" id="sendTheApp" name="sendTheApp">
           <label for="sendApp" class="close-form"></label>
           <h2>Заявка на обучение</h2>
           <div class="form-row clearfix">
               <label for="name" required>Ваше имя</label>
-              <input type="text" id="name" name="name">
+              <input type="text" id="name" name="name" required="required">
           </div>
           <div class="form-row clearfix">
               <label for="phone" required>Ваш телефон</label>
-              <input type="tel" id="phone" name="phone">
+              <input type="tel" id="phone" name="phone" required="required">
           </div>
           <div class="form-row clearfix">
               <label for="mail" required>Ваша почта</label>
-              <input type="email" id="mail" name="mail">
+              <input type="email" id="mail" name="mail" required="required">
           </div>
           <div class="form-row clearfix">
               <label for="comment">Комментарий</label>
               <textarea id="comment" row="4" name="comment"></textarea>
           </div>
           <div class="form-row clearfix">
-            <input type="submit" name='submit' value="Отправить" id="submit">  
-            <!-- <button type="submit">Отправить</button> -->
+            <button type="button" id="submit">Отправить</button> 
+            <h3 class="messageDone">Заявка отправлена!</h3>
           </div>          
         </form>
         
@@ -48,7 +48,7 @@
         <nav class="conteiner navigation">
           <ul>
             <li><label for="sendApp" class="like-button big-screen">Подать заявку</label></li>
-            <li><a href="#price">Цены и расписание</a></li>
+            <li><a href="#price">Цены</a></li>
             <li><a href="#contacts">Контакты</a></li>
             <li><a href="test/test.html" id="toExam">Экзамен</a></li>
             <li><a href="test/test.html" id="toTest">Тест on-line</a></li>
@@ -81,7 +81,7 @@
             <input type="checkbox" id="show_small_menu"></input>
             <label for="show_small_menu"></label>
             <ul>
-              <li><a href="#price">Цены и расписание</a></li>
+              <li><a href="#price">Цены2</a></li>
               <li><a href="#contacts">Контакты</a></li>
               <li><a href="test/test.html">Экзамен on-line</a></li>
               <li><a href="test/test.html">Тест on-line</a></li>
@@ -200,6 +200,8 @@
       var toTest = document.getElementById("toTest");
       toTest.onclick = function() { localStorage.setItem('autoclab.exam', 'false)') }
     </script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="js/carousel.js"></script>
+    <script src="js/form.js"></script>
 
   </body>
