@@ -1,30 +1,29 @@
-<?php 
-if((isset($_GET['name'])&&$_POST['name']!="")&&(isset($_GET['phone'])&&$_GET['phone']!="")&&(isset($_GET['mail'])&&$_GET['mail']!="")){ //Проверка отправилось ли наше поля name и не пустые ли они
+<?php
         $to = 'ovmardar@gmail.com'; //Почта получателя, через запятую можно указать сколько угодно адресов
         $subject = 'Новая заявка'; //Загаловок сообщения
+        $name = $_GET['name']; // Вытаскиваем имя в переменную
+        $email = $_GET['email']; // Вытаскиваем почту в переменную
+        $phone = $_GET['phone'];
+        $comment = $_GET['comment'];
+        
         $message = '
                 <html>
                     <head>
                         <title>'.$subject.'</title>
                     </head>
                     <body>
-                        <p>Имя: '.$_GET['name'].'</p>
-						<p>Телефон: '.$_GET['phone'].'</p> 
-						<p>Почта: '.$_GET['mail'].'</p>   
-						<p>Комментарий: '.$_GET['comment'].'</p>                       
+                        <p>Имя: '.$name.'</p>
+						<p>Телефон: '.$phone.'</p> 
+						<p>Почта: '.$email.'</p>   
+						<p>Комментарий: '.$comment.'</p>                       
                     </body>
                 </html>'; //Текст нащего сообщения можно использовать HTML теги
         $headers  = "Content-type: text/html; charset=utf-8 \r\n"; //Кодировка письма
-        $headers .= "From: Отправитель <from@example.com>\r\n"; //Наименование и почта отправителя
+        $headers .= "From: Отправитель Сайт Автошколы\r\n"; //Наименование и почта отправителя
         if(mail($to, $subject, $message, $headers)) { // При помощи функции mail, отправляем сообщение, проверяя отправилось оно или нет
-            echo "<p>Сообщение успешно отправлено</p>"; // Отправка успешна
+            echo json_encode("{'result': 'ok'}"); // Отправка успешна
         }
         else {
-          echo "<p>Что-то пошло не так, как планировалось</p>"; // Письмо не отправилось
+            echo json_encode("{'result': 'no'}");; // Письмо не отправилось
         }
-        
-}
-else {
-    echo "Проверка не пройдена!";   
-}
 ?>
