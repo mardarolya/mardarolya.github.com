@@ -10,13 +10,13 @@ Font license info
    Homepage:  http://fortawesome.github.com/Font-Awesome/
 
 
-## Elusive
+## Iconic
 
-   Copyright (C) 2013 by Aristeides Stathopoulos
+   Copyright (C) 2012 by P.J. Onori
 
-   Author:    Aristeides Stathopoulos
+   Author:    P.J. Onori
    License:   SIL (http://scripts.sil.org/OFL)
-   Homepage:  http://aristeides.com/
+   Homepage:  http://somerandomdude.com/work/iconic/
 
 
 ## MFG Labs
