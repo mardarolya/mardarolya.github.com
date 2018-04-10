@@ -197,6 +197,8 @@ img {
 }
 
 .project .contain-image {
+  position: relative;
+
   box-sizing: border-box;
   border: 1px solid #717B8E;
   border-radius: 5px;
@@ -208,26 +210,27 @@ img {
   margin-bottom: -5px;
 }
 
-.project img:hover {
-  transform: scale(1.1);
+.contain-image:hover .project-about{
+  transform: translateY(-100%);
 }
 
-.project .project-about {
+.contain-image .project-about {
+  position: absolute;
+  display: inline-block;
+  
+  width: 100%;
+  top: 100%;
+  left: 0;
+
+  box-sizing: border-box;
+  padding: 10px;
+  transition: all 0.5s ease;
+  background:white;
+
   list-style: none;
-  margin: 10px 0;
-  margin-left: 3%;
-  padding: 0;
-
-  display:none;
+  line-height: 24px;
+  margin: 0;
 }
-
-// .project-about-confectionary,
-// .project-about-sedona,
-// .project-about-barbershop,
-// .project-about-goodinc,
-// .project-about-innosphera {
-//   display:none;
-// }
 
 .project-about li {
   position: relative;
@@ -257,13 +260,6 @@ img {
   color: #717B8E;
 }
 
-// .github-code-confectionary,
-//  .github-code-sedona,
-//  .github-code-barbershop,
-//  .github-code-goodinc {
-//   display: none;
-// }
-
 .btn-nav {
   font-size: 0;
   text-align: center;
@@ -292,17 +288,19 @@ img {
   color: #2D3431;
 }
 
-.btn-more,
-.btn-less {
+.btn-more {
   border: 2px solid #717B8E;
   background-color: #717B8E;
   color: #FFECDB;
+  margin-right: 5px;  
+}
+
+.btn-more:last-child {
+  margin-right: 0;
 }
 
 .btn-more:hover,
-.btn-more:active,
-.btn-less:hover,
-.btn-less:active {
+.btn-more:active {
   background-color: #FFECDB;
   color: #717B8E;
 }
@@ -339,7 +337,7 @@ img {
    }
    .contacts .small-img {
      width: 25%;
-     margin-bottom" -5px;
+     margin-bottom: -5px;
    }
    .big-img {
      display: none;
